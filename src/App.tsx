@@ -9,6 +9,7 @@ import RemoveObject from "./Pages/RemoveObject";
 import Community from "./Pages/Community";
 import Login from "./Pages/Login";
 import SignUp from "./Pages/SignUp";
+import Pricing from "./Pages/Pricing";
 import { Toaster } from 'react-hot-toast'
 
 const App = () => {
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/Pricing" element={<Pricing />} />
         <Route path="/ai" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="write-article" element={<WriteArticle />} />
