@@ -9,8 +9,45 @@
 @theme{
   --color-primary : #5044E5
 }
-.reset-tw, .reset-tw *{
-  all: revert !important;
+/* Premium Markdown Typography Styling */
+.reset-tw {
+  color: #D4D4D8; /* text-zinc-300 */
+  line-height: 1.75;
+}
+.reset-tw p {
+  margin-bottom: 1.25em;
+  font-family: "Montserrat", sans-serif;
+}
+.reset-tw h1, .reset-tw h2, .reset-tw h3 {
+  color: #F4F4F5; /* text-zinc-100 */
+  font-weight: 700;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  letter-spacing: -0.025em;
+}
+.reset-tw h1 { font-size: 1.875rem; }
+.reset-tw h2 { font-size: 1.5rem; border-bottom: 1px solid #27272A; padding-bottom: 0.3em; }
+.reset-tw h3 { font-size: 1.25rem; }
+.reset-tw strong, .reset-tw b {
+  color: #d946ef; /* fuchsia-500 for bolding so it pops! */
+  font-weight: 600;
+}
+.reset-tw ul, .reset-tw ol {
+  padding-left: 1.5em;
+  margin-bottom: 1.25em;
+  margin-top: 0.5em;
+  color: #A1A1AA; /* text-zinc-400 */
+}
+.reset-tw ul li {
+  list-style-type: disc;
+  margin-bottom: 0.25em;
+}
+.reset-tw ul li::marker {
+  color: #8b5cf6; /* indigo-500 marker */
+}
+.reset-tw ol li {
+  list-style-type: decimal;
+  margin-bottom: 0.25em;
 }
 .cl-drawerRoot{
   z-index: 10;

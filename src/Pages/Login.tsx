@@ -78,7 +78,7 @@ const Login: React.FC = () => {
                         </svg>
                     </motion.div>
                     <h2 className="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400">Welcome Back</h2>
-                    <p className="text-sm text-zinc-400 mt-2">Sign in to DocuBrain and supercharge your workflow</p>
+                    <p className="text-sm text-zinc-400 mt-2">Sign in to NeuroGlow AI and supercharge your workflow</p>
                 </div>
 
                 <div className="w-full flex justify-center mb-6">
@@ -86,14 +86,14 @@ const Login: React.FC = () => {
                         <GoogleLogin
                             theme="filled_black"
                             onSuccess={(credentialResponse) => {
-                                axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/user/google`, {
+                                axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/google`, {
                                     token: credentialResponse.credential
                                 }, { withCredentials: true })
                                 .then((res) => {
                                     if (res.data.success) {
                                         dispatch(setUser(res.data.user));
                                         toast.success("Account created successfully!");
-                                        navigate("/dashboard");
+                                        navigate("/ai");
                                     }
                                 }).catch(() => toast.error("Google signup failed"));
                             }}

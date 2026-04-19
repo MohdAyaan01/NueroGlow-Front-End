@@ -12,7 +12,7 @@ const Testimonial = () => {
         </div>
 
         <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-zinc-100 to-zinc-400 relative z-10">What Our Users Say</h1>
-        <p className="text-base text-zinc-400 mt-5 max-w-xl text-center relative z-10">Join thousands of professionals who transformed their workflows with DocuBrain.</p>
+        <p className="text-base text-zinc-400 mt-5 max-w-xl text-center relative z-10">Join thousands of professionals who transformed their workflows with NeuroGlow AI.</p>
         
         <div className="flex flex-wrap justify-center gap-6 mt-16 text-left relative z-10 px-4">
         <div className="w-80 flex flex-col items-start border border-zinc-800/80 p-7 rounded-2xl bg-zinc-900/40 backdrop-blur-xl shadow-xl hover:-translate-y-2 hover:border-fuchsia-500/30 transition-all duration-500 group relative overflow-hidden">

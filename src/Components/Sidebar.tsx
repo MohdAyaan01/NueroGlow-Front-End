@@ -45,35 +45,43 @@ const Sidebar: React.FC<SidebarProps> = ({ sidebar, setSidebar }) => {
     if (!user) return null;
 
     return (
-        <div className={`w-60 bg-white border-r border-gray-200 flex flex-col justify-between items-center max-sm:absolute top-14 bottom-0 ${sidebar ? 'translate-x-8' : 'max-sm:translate-x-full'} transition-all duration-300 ease-in-out`}>
-            <div className='my-7 w-full'>
-                <div className='w-13 h-13 rounded-full mx-auto bg-primary flex items-center justify-center text-white text-xl font-bold'>
-                    {(user.username || user.name || "?").charAt(0)}
+        <div className={`relative z-40 w-64 bg-[#09090b] border-r border-zinc-800 flex flex-col justify-between items-center max-sm:absolute top-0 bottom-0 ${sidebar ? 'translate-x-0' : 'max-sm:-translate-x-full'} transition-all duration-300 ease-in-out`}>
+            {/* Subtle inner highlight */}
+            <div className="absolute inset-y-0 right-0 w-px bg-gradient-to-b from-transparent via-zinc-800 to-transparent"></div>
+            
+            <div className='mt-8 w-full px-4'>
+                <div className='w-16 h-16 rounded-full mx-auto bg-gradient-to-br from-fuchsia-600 to-indigo-500 shadow-lg shadow-fuchsia-500/20 flex items-center justify-center text-white text-2xl font-bold border-2 border-white/10'>
+                    {(user.username || user.name || "?").charAt(0).toUpperCase()}
                 </div>
-                <h1 className='mt-1 text-center font-medium text-gray-800'>{user.username || user.name}</h1>
-                <div className='px-6 mt-5 text-sm text-gray-600 font-medium'>
+                <h1 className='mt-3 text-center font-semibold text-zinc-100'>{user.username || user.name}</h1>
+                <p className='text-center text-xs text-zinc-500'>Pro Member</p>
+                
+                <div className='mt-8 flex flex-col gap-1.5 text-sm font-medium'>
                     {navItems.map((item) => (
-                        <NavLink key={item.to} to={item.to} end={item.to === '/ai'} onClick={() => setSidebar(false)} className={({ isActive }) => `px-3.5 py-2.5 flex items-center gap-3 rounded ${isActive ? 'bg-gradient-to-r from-[#3C81F6] to-[#9234EA] text-white' : ''}`}>
+                        <NavLink key={item.to} to={item.to} end={item.to === '/ai'} onClick={() => setSidebar(false)} className={({ isActive }) => `px-4 py-3 flex items-center gap-3.5 rounded-xl transition-all duration-300 ${isActive ? 'bg-gradient-to-r from-fuchsia-600/10 to-indigo-500/10 text-zinc-100 border border-fuchsia-500/20 shadow-sm shadow-fuchsia-500/5' : 'text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/50'}`}>
                             {({ isActive }) => (
                                 <>
-                                    <item.Icon className={`w-4 h-4 ${isActive ? 'text-white' : ''}`} />
-                                    {item.label}
+                                    <item.Icon className={`w-4 h-4 transition-colors ${isActive ? 'text-fuchsia-400' : 'text-zinc-500'}`} />
+                                    <span>{item.label}</span>
                                 </>
                             )}
                         </NavLink>
                     ))}
                 </div>
             </div>
-            <div className='w-full border-t border-gray-200 p-4 px-7 flex items-center justify-between gap-2'>
-                <div className='flex gap-2 items-center cursor-pointer'>
-                    <div className='w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-xs font-bold'>
-                        {(user.username || user.name || "?").charAt(0)}
+            
+            <div className='w-full border-t border-zinc-800 p-5 flex items-center justify-between gap-3 bg-zinc-950/30'>
+                <div className='flex gap-3 items-center cursor-pointer'>
+                    <div className='w-9 h-9 rounded-full bg-gradient-to-br from-fuchsia-600 to-indigo-500 flex items-center justify-center text-white text-sm font-bold shadow-md shadow-fuchsia-500/20 border border-white/10'>
+                        {(user.username || user.name || "?").charAt(0).toUpperCase()}
                     </div>
-                    <div>
-                        <h1 className='text-sm font-medium'>{user.username || user.name}</h1>
+                    <div className="flex flex-col">
+                        <h1 className='text-sm leading-tight text-zinc-200 font-medium truncate max-w-[100px]'>{user.username || user.name}</h1>
                     </div>
                 </div>
-                <IoMdLogOut onClick={logoutHandler} className='w-4.5 text-gray-400 hover:text-gray-700 transition cursor-pointer' />
+                <div onClick={logoutHandler} className="p-2 rounded-lg hover:bg-red-500/10 text-zinc-500 hover:text-red-400 transition-colors cursor-pointer group tooltip-trigger">
+                    <IoMdLogOut className='w-5 h-5' />
+                </div>
             </div>
         </div>
     )

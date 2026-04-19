@@ -26,17 +26,23 @@ const Layout:React.FC = () => {
   }
 
   return (
-    <div className='flex flex-col items-start justify-start h-screen overflow-hidden'>
-      <nav className='w-full px-8 min-h-14 flex items-center justify-between border-b border-gray-200 bg-white'>
-        <img src={LogoSaaS} alt='Logo' onClick={() => navigate('/')} className='h-18 w-18 rounded-full cursor-pointer ' />
+    <div className='flex flex-col items-start justify-start h-screen overflow-hidden bg-[#09090b] text-zinc-200'>
+      <nav className='relative z-50 w-full px-8 min-h-16 flex items-center justify-between border-b border-zinc-800 bg-[#09090b]/80 backdrop-blur-xl transition-all duration-300'>
+        <div className="flex items-center gap-4 cursor-pointer" onClick={() => navigate('/')}>
+          <img src={LogoSaaS} alt='Logo' className='h-12 w-12 sm:h-14 sm:w-14 rounded-full shadow-lg shadow-fuchsia-500/20 hover:scale-105 transition-transform' />
+          <span className="text-xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-400 to-indigo-400 hidden sm:block">NeuroGlow AI</span>
+        </div>
         {
-          sidebar ? <FaXmark onClick={() => setSidebar(false)} className='h-6 w-6 text-gray-600 sm:hidden' />
-            : <IoIosMenu onClick={() => setSidebar(true)} className='h-6 w-6 text-gray-600 sm:hidden' />
+          sidebar ? <FaXmark onClick={() => setSidebar(false)} className='h-6 w-6 text-zinc-400 hover:text-zinc-100 transition-colors sm:hidden cursor-pointer' />
+            : <IoIosMenu onClick={() => setSidebar(true)} className='h-6 w-6 text-zinc-400 hover:text-zinc-100 transition-colors sm:hidden cursor-pointer' />
         }
       </nav>
-      <div className='flex-1 w-full h-[calc(100vh-64px)] flex overflow-hidden'>
+      <div className='flex-1 w-full h-[calc(100vh-64px)] flex overflow-hidden relative'>
+        {/* Subtle Ambient Body Glow */}
+        <div className="absolute top-[20%] left-[-10%] w-[40%] h-[40%] bg-fuchsia-600/5 rounded-full blur-[150px] pointer-events-none" />
+        
         <Sidebar sidebar={sidebar} setSidebar={setSidebar} />
-        <div className='flex-1 bg-[#F4F7FB] overflow-y-auto'>
+        <div className='flex-1 bg-[#09090b] overflow-y-auto relative z-10 custom-scrollbar'>
           <Outlet />
         </div>
       </div>

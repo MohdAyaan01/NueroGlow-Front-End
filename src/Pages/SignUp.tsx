@@ -39,7 +39,7 @@ const SignUp:React.FC = () => {
     const submithandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         try {
-            const res = await api.post<SignUpResponse>(`${import.meta.env.VITE_BASE_URL}/api/auth/user/signup`, input, {
+            const res = await api.post<SignUpResponse>(`${import.meta.env.VITE_BASE_URL}/api/auth/signup`, input, {
                 headers: { 'Content-Type': "application/json" },
                 withCredentials: true
             });
@@ -75,7 +75,7 @@ const SignUp:React.FC = () => {
                         </svg>
                     </motion.div>
                     <h2 className="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-zinc-100 to-zinc-400">Create Account</h2>
-                    <p className="text-sm text-zinc-400 mt-2">Join DocuBrain and supercharge your workflow</p>
+                    <p className="text-sm text-zinc-400 mt-2">Join NeuroGlow AI and supercharge your workflow</p>
                 </div>
 
                 <div className="w-full flex justify-center mb-6">
@@ -83,14 +83,14 @@ const SignUp:React.FC = () => {
                         <GoogleLogin
                             theme="filled_black"
                             onSuccess={(credentialResponse) => {
-                                axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/user/google`, {
+                                axios.post(`${import.meta.env.VITE_BASE_URL}/api/auth/google`, {
                                     token: credentialResponse.credential
                                 }, { withCredentials: true })
                                 .then((res) => {
                                     if (res.data.success) {
                                         dispatch(setUser(res.data.user));
                                         toast.success("Account created successfully!");
-                                        navigate("/dashboard");
+                                        navigate("/ai");
                                     }
                                 }).catch(() => toast.error("Google signup failed"));
                             }}

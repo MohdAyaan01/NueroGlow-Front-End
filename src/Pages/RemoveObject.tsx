@@ -26,8 +26,9 @@ const RemoveObject:React.FC = () => {
       toast.error("Please Enter Object Name");
       return;
     }
-    if(object.trim().split("").length > 1){
-      toast.error("Only One Object Name Allowed")
+      if(object.trim().split(" ").length > 1){
+      toast.error("Only One Object Name Allowed");
+      return; 
     }
     try {
       setLoading(true);
@@ -44,7 +45,8 @@ const RemoveObject:React.FC = () => {
         toast.error(data.message);
       }
     } catch (error:any) {
-      toast.error(error.message)
+       const realError = error.response?.data?.message || error.message;
+      toast.error(realError);
     }
     setLoading(false);
   }
