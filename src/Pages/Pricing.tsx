@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { Link } from "react-router-dom"
 import { FaCheck, FaBolt, FaStar, FaArrowLeft } from "react-icons/fa6"
-
+import PaymentButton from "../Components/PaymentButton"
 const PricingPage = () => {
     const [isAnnual, setIsAnnual] = useState(false)
 
@@ -119,9 +119,15 @@ const PricingPage = () => {
                                     ))}
                                 </div>
 
-                                <button className={`w-full py-4 rounded-2xl font-bold transition duration-300 ${plan.buttonColor}`}>
-                                    Get Started
-                                </button>
+                                   {plan.name === 'Pro' ? (
+                                    <PaymentButton className={`w-full py-4 rounded-2xl font-bold transition duration-300 ${plan.buttonColor}`}>
+                                        Get Started
+                                    </PaymentButton>
+                                ) : (
+                                    <button className={`w-full py-4 rounded-2xl font-bold transition duration-300 ${plan.buttonColor}`}>
+                                        Get Started
+                                    </button>
+                                )}
                             </div>
                         </div>
                     ))}
